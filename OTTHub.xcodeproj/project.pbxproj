@@ -11,6 +11,11 @@
 		28C36F2E25B44A52005B710D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C36F2D25B44A52005B710D /* ViewController.swift */; };
 		28C36F3025B44A54005B710D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C36F2F25B44A54005B710D /* Assets.xcassets */; };
 		28C36F3325B44A54005B710D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C36F3125B44A54005B710D /* Main.storyboard */; };
+		28C36F4425B44BAF005B710D /* primevideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C36F3F25B44BAF005B710D /* primevideo.png */; };
+		28C36F4525B44BAF005B710D /* netflix.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C36F4025B44BAF005B710D /* netflix.png */; };
+		28C36F4625B44BAF005B710D /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C36F4125B44BAF005B710D /* youtube.png */; };
+		28C36F4725B44BAF005B710D /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C36F4325B44BAF005B710D /* FlatButton.swift */; };
+		28C36F4A25B44BD1005B710D /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C36F4925B44BD1005B710D /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		28C36F3225B44A54005B710D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28C36F3425B44A54005B710D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28C36F3525B44A54005B710D /* OTTHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OTTHub.entitlements; sourceTree = "<group>"; };
+		28C36F3F25B44BAF005B710D /* primevideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = primevideo.png; sourceTree = "<group>"; };
+		28C36F4025B44BAF005B710D /* netflix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = netflix.png; sourceTree = "<group>"; };
+		28C36F4125B44BAF005B710D /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
+		28C36F4325B44BAF005B710D /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
+		28C36F4925B44BD1005B710D /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,9 @@
 		28C36F2A25B44A52005B710D /* OTTHub */ = {
 			isa = PBXGroup;
 			children = (
+				28C36F4925B44BD1005B710D /* WindowController.swift */,
+				28C36F4225B44BAF005B710D /* FlatButton */,
+				28C36F3E25B44BAF005B710D /* Resources */,
 				28C36F2B25B44A52005B710D /* AppDelegate.swift */,
 				28C36F2D25B44A52005B710D /* ViewController.swift */,
 				28C36F2F25B44A54005B710D /* Assets.xcassets */,
@@ -61,6 +74,24 @@
 				28C36F3525B44A54005B710D /* OTTHub.entitlements */,
 			);
 			path = OTTHub;
+			sourceTree = "<group>";
+		};
+		28C36F3E25B44BAF005B710D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28C36F3F25B44BAF005B710D /* primevideo.png */,
+				28C36F4025B44BAF005B710D /* netflix.png */,
+				28C36F4125B44BAF005B710D /* youtube.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		28C36F4225B44BAF005B710D /* FlatButton */ = {
+			isa = PBXGroup;
+			children = (
+				28C36F4325B44BAF005B710D /* FlatButton.swift */,
+			);
+			path = FlatButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +151,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C36F4525B44BAF005B710D /* netflix.png in Resources */,
+				28C36F4425B44BAF005B710D /* primevideo.png in Resources */,
 				28C36F3025B44A54005B710D /* Assets.xcassets in Resources */,
+				28C36F4625B44BAF005B710D /* youtube.png in Resources */,
 				28C36F3325B44A54005B710D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C36F4725B44BAF005B710D /* FlatButton.swift in Sources */,
+				28C36F4A25B44BD1005B710D /* WindowController.swift in Sources */,
 				28C36F2E25B44A52005B710D /* ViewController.swift in Sources */,
 				28C36F2C25B44A52005B710D /* AppDelegate.swift in Sources */,
 			);

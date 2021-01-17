@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -10,11 +12,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="OTTHub" id="1Xt-HY-uBw">
+                            <menuItem title="FloatTube" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="OTTHub" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="FloatTube" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About OTTHub" id="5kV-Vb-QxS">
+                                        <menuItem title="About FloatTube" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -28,7 +30,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide OTTHub" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide FloatTube" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -46,7 +48,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit OTTHub" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit FloatTube" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -659,7 +661,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="OTTHub Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="FloatTube Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -673,21 +675,22 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FloatTube" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-445" y="25"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                <windowController storyboardIdentifier="WindowController" id="B8D-0N-5wS" customClass="WindowController" customModule="FloatTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="FloatWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="700" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="700" height="480"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -698,20 +701,290 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="-339.5" y="353"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="FloatTube" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView focusRingType="none" blendingMode="behindWindow" material="selection" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-Ok-db6">
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="270"/>
+                            </visualEffectView>
+                            <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="cbm-dn-n2X">
+                                <rect key="frame" x="0.0" y="241" width="560" height="29"/>
+                                <view key="contentView" id="A43-im-ldu">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button identifier="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-mt-HLX" customClass="FlatButton" customModule="FloatTube" customModuleProvider="target">
+                                            <rect key="frame" x="76" y="1" width="80" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="5H1-8W-Rmc"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" title="YouTube" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="pR9-dq-dur">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="Helvetica-Bold"/>
+                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowOpacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                    <color key="value" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="serviceButton_Clicked:" target="XfG-lQ-9wD" id="urG-qK-aPw"/>
+                                            </connections>
+                                        </button>
+                                        <button identifier="netflix" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="EFV-eg-hAC" customClass="FlatButton" customModule="FloatTube" customModuleProvider="target">
+                                            <rect key="frame" x="156" y="1" width="80" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="RLW-9q-qrg"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" title="Netflix" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2NH-PD-fXt">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="Helvetica-Bold"/>
+                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowOpacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="serviceButton_Clicked:" target="XfG-lQ-9wD" id="lfo-Fh-RLC"/>
+                                            </connections>
+                                        </button>
+                                        <button identifier="primevideo" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="LKf-9I-Npo" customClass="FlatButton" customModule="FloatTube" customModuleProvider="target">
+                                            <rect key="frame" x="236" y="1" width="80" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="Sb5-WJ-HMV"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" title="Prime" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="N26-Dt-eYO">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="Helvetica-Bold"/>
+                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowOpacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="serviceButton_Clicked:" target="XfG-lQ-9wD" id="q0Z-yB-25A"/>
+                                            </connections>
+                                        </button>
+                                        <button identifier="hotstar" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="ORG-3u-H6a" customClass="FlatButton" customModule="FloatTube" customModuleProvider="target">
+                                            <rect key="frame" x="316" y="1" width="80" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="BJu-dY-zb8"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" title="Hotstar" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="OFO-as-UgF">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="Helvetica-Bold"/>
+                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowOpacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="serviceButton_Clicked:" target="XfG-lQ-9wD" id="MpQ-z4-VWK"/>
+                                            </connections>
+                                        </button>
+                                        <box boxType="custom" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-uB-b8X">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="1"/>
+                                            <view key="contentView" id="zsm-P5-d8y">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="RqU-WH-IRc"/>
+                                            </constraints>
+                                            <color key="fillColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                        </box>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DsZ-Yk-F7j" customClass="FlatButton" customModule="FloatTube" customModuleProvider="target">
+                                            <rect key="frame" x="507" y="5" width="48" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" title="Float" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Osr-kT-iof">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system" size="11"/>
+                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowOpacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="floatButton_ClickedWith_button:" target="XfG-lQ-9wD" id="mEx-hP-SWz"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-kf-zGa" customClass="FlatButton" customModule="FloatTube" customModuleProvider="target">
+                                            <rect key="frame" x="455" y="5" width="48" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="square" title="Reload" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Xev-KA-xa4">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system" size="11"/>
+                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                                    <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowRadius">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="glowOpacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="reloadButton_Clicked:" target="XfG-lQ-9wD" id="g84-EV-qC9"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="x3m-uB-b8X" firstAttribute="leading" secondItem="A43-im-ldu" secondAttribute="leading" id="9wa-de-uS4"/>
+                                        <constraint firstItem="kn2-mt-HLX" firstAttribute="top" secondItem="A43-im-ldu" secondAttribute="top" id="GgG-uh-J0x"/>
+                                        <constraint firstAttribute="bottom" secondItem="x3m-uB-b8X" secondAttribute="bottom" id="Gpl-Wx-c4r"/>
+                                        <constraint firstItem="LKf-9I-Npo" firstAttribute="leading" secondItem="EFV-eg-hAC" secondAttribute="trailing" id="Ije-jK-Bpx"/>
+                                        <constraint firstAttribute="trailing" secondItem="x3m-uB-b8X" secondAttribute="trailing" id="JFd-pE-OhJ"/>
+                                        <constraint firstItem="ORG-3u-H6a" firstAttribute="leading" secondItem="LKf-9I-Npo" secondAttribute="trailing" id="PKl-io-Fl5"/>
+                                        <constraint firstItem="ORG-3u-H6a" firstAttribute="top" secondItem="A43-im-ldu" secondAttribute="top" id="Qvu-b8-dwf"/>
+                                        <constraint firstItem="x3m-uB-b8X" firstAttribute="top" secondItem="ORG-3u-H6a" secondAttribute="bottom" id="V12-gn-xAs"/>
+                                        <constraint firstItem="EFV-eg-hAC" firstAttribute="leading" secondItem="kn2-mt-HLX" secondAttribute="trailing" id="enz-l5-l8J"/>
+                                        <constraint firstItem="x3m-uB-b8X" firstAttribute="top" secondItem="EFV-eg-hAC" secondAttribute="bottom" id="fRm-3e-xUY"/>
+                                        <constraint firstItem="x3m-uB-b8X" firstAttribute="top" secondItem="kn2-mt-HLX" secondAttribute="bottom" id="kEH-Xp-KTG"/>
+                                        <constraint firstItem="LKf-9I-Npo" firstAttribute="top" secondItem="A43-im-ldu" secondAttribute="top" id="ksi-7k-YL0"/>
+                                        <constraint firstItem="EFV-eg-hAC" firstAttribute="top" secondItem="A43-im-ldu" secondAttribute="top" id="pmB-IK-qDf"/>
+                                        <constraint firstItem="x3m-uB-b8X" firstAttribute="top" secondItem="LKf-9I-Npo" secondAttribute="bottom" id="vRx-Z5-xFk"/>
+                                        <constraint firstItem="kn2-mt-HLX" firstAttribute="leading" secondItem="A43-im-ldu" secondAttribute="leading" constant="76" id="vYB-Dd-AKv"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="yOQ-U5-65a"/>
+                                </constraints>
+                            </box>
+                            <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="5s5-hl-06z">
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="241"/>
+                                <view key="contentView" id="2Oi-B0-8Fe">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="241"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hvq-Ok-db6" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="8rP-Oz-qkj"/>
+                            <constraint firstItem="5s5-hl-06z" firstAttribute="top" secondItem="cbm-dn-n2X" secondAttribute="bottom" id="ByL-dB-FSj"/>
+                            <constraint firstAttribute="trailing" secondItem="hvq-Ok-db6" secondAttribute="trailing" id="CWS-Yd-SC5"/>
+                            <constraint firstAttribute="trailing" secondItem="cbm-dn-n2X" secondAttribute="trailing" id="HXc-Gq-bG3"/>
+                            <constraint firstItem="cbm-dn-n2X" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="LM2-QG-Xjy"/>
+                            <constraint firstItem="cbm-dn-n2X" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="UrO-dF-1Mb"/>
+                            <constraint firstAttribute="bottom" secondItem="hvq-Ok-db6" secondAttribute="bottom" id="cHQ-jh-Nxa"/>
+                            <constraint firstAttribute="trailing" secondItem="5s5-hl-06z" secondAttribute="trailing" id="ct2-o8-9nh"/>
+                            <constraint firstItem="hvq-Ok-db6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="el8-7Q-TzW"/>
+                            <constraint firstItem="5s5-hl-06z" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ikA-vM-fSg"/>
+                            <constraint firstAttribute="bottom" secondItem="5s5-hl-06z" secondAttribute="bottom" id="mkm-Le-v8i"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentBox" destination="5s5-hl-06z" id="HZU-Ri-ZWk"/>
+                        <outlet property="headerBox" destination="cbm-dn-n2X" id="Q3q-Cq-UVq"/>
+                        <outlet property="highlightBox" destination="x3m-uB-b8X" id="mrD-7C-Xzz"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="-445" y="623"/>
         </scene>
     </scenes>
 </document>
