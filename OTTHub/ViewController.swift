@@ -8,7 +8,7 @@
 import Cocoa
 import WebKit
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, WKUIDelegate {
     
     @IBOutlet var headerBox: NSBox?
     @IBOutlet var contentBox: NSBox?
@@ -50,20 +50,6 @@ class ViewController: NSViewController {
         loadWebView("youtube")
     }
     
-    func getWebView(_ name: String) -> WKWebView {
-        if let webview = data[name] {
-            if let webview = webview {
-                return webview
-            }
-        }
-        let service = source[name]!
-        let config = WKWebViewConfiguration()
-        let webView = WKWebView(frame: (contentBox?.contentView?.bounds)!, configuration: config)
-        webView.autoresizingMask = [.height, .width, .minXMargin, .minYMargin]
-        webView.load(URLRequest(url: URL(string: service["url"]!)!))
-        
-        return webView
-    }
     func loadWebView(_ name: String) {
         if let wv = currentWebView {
             print("remove \(wv.title ?? "")")
@@ -82,6 +68,7 @@ class ViewController: NSViewController {
             let config = WKWebViewConfiguration()
             let webview = WKWebView(frame: (contentBox?.contentView?.bounds)!, configuration: config)
             webview.autoresizingMask = [.height, .width, .minXMargin, .minYMargin]
+            webview.uiDelegate = self
             webview.load(URLRequest(url: URL(string: service["url"]!)!))
             contentBox?.addSubview(webview, positioned: .above, relativeTo: nil)
             data[name] = webview
@@ -104,6 +91,31 @@ class ViewController: NSViewController {
     }
     @IBAction func floatButton_Clicked(_button: FlatButton) {
         
+    }
+    
+    // MARK: - WKUIDelegate
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if let url = navigationAction.request.url {
+            let alert = NSAlert()
+            alert.messageText = "Do you want to open the following link in a browser window?"
+            alert.informativeText = "\(url.absoluteString)"
+            alert.addButton(withTitle: "Yes")
+            alert.addButton(withTitle: "No")
+            alert.beginSheetModal(for: self.view.window!) { (response) in
+                if response == .alertFirstButtonReturn {
+                    NSWorkspace.shared.open([url], withApplicationAt: URL(fileURLWithPath: "/Applications/Google Chrome.app"), configuration: NSWorkspace.OpenConfiguration()) { (app, err) in
+                        if let app = app {
+                            print("Loaded url [\(url.absoluteString)] with app [\(app.localizedName ?? "--")]")
+                        }
+                        if let err = err {
+                            print("but with error [\(err.localizedDescription)]")
+                        }
+                    }
+                }
+            }
+        }
+        
+        return nil
     }
 }
 
