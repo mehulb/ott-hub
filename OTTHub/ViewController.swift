@@ -84,13 +84,27 @@ class ViewController: NSViewController, WKUIDelegate {
             NotificationCenter.default.post(name: FTNotificationNameServiceTabChanged, object: id)
         }
     }
-    @IBAction func reloadButton_Clicked(_ button: FlatButton) {
+    @IBAction func navigationActionButton_Clicked(_ button: FlatButton) {
         if let wv = currentWebView {
-            wv.reload()
+            switch button.tag {
+                case -1:
+                    wv.goBack()
+                case 1:
+                    wv.goForward()
+                default:
+                    wv.reload()
+            }
         }
     }
-    @IBAction func floatButton_Clicked(_button: FlatButton) {
-        
+    @IBAction func floatButton_Clicked(_ button: FlatButton) {
+        if self.view.window!.level == .normal {
+            self.view.window!.level = .floating
+            button.iconColor = .systemRed
+        }
+        else {
+            self.view.window!.level = .normal
+            button.iconColor = .textColor
+        }
     }
     
     // MARK: - WKUIDelegate
