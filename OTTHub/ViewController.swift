@@ -8,9 +8,19 @@
 import Cocoa
 import WebKit
 
+class HeaderBox: NSBox {
+    override func mouseUp(with event: NSEvent) {
+        if event.clickCount == 2 {
+            if let window = self.window {
+                window.zoom(nil)
+            }
+        }
+    }
+}
+
 class ViewController: NSViewController, WKUIDelegate {
     
-    @IBOutlet var headerBox: NSBox?
+    @IBOutlet var headerBox: HeaderBox?
     @IBOutlet var contentBox: NSBox?
     @IBOutlet var highlightBox: NSBox?
     
@@ -130,6 +140,30 @@ class ViewController: NSViewController, WKUIDelegate {
         }
         
         return nil
+    }
+}
+// Key events
+extension ViewController {
+    override func keyDown(with event: NSEvent) {
+        print("\(event)")
+        if let characters = event.characters, characters.count == 1 {
+            if event.modifierFlags.contains(.command) {
+                if event.keyCode == 15 {            // "r"
+                    currentWebView?.reload()
+                    return
+                } else if event.keyCode == 123 {    // "←"
+                    currentWebView?.goBack()
+                    return
+                } else if event.keyCode == 124 {    // "→"
+                    currentWebView?.goForward()
+                    return
+                } else if event.keyCode == 36 {     // "↵"
+                    currentWebView?.reloadFromOrigin()
+                    return
+                }
+            }
+        }
+        super.keyDown(with: event)
     }
 }
 
