@@ -24,6 +24,8 @@ class ViewController: NSViewController, WKUIDelegate {
     @IBOutlet var contentBox: NSBox?
     @IBOutlet var highlightBox: NSBox?
     
+    @IBOutlet var contentBoxTopConstraint: NSLayoutConstraint?
+    
     var currentWebView: WKWebView?
     
     var source: [String: [String: String]] = [
@@ -58,6 +60,27 @@ class ViewController: NSViewController, WKUIDelegate {
         super.viewDidLoad()
         
         loadWebView("youtube")
+        
+        NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification, object: nil, queue: .main) { _ in
+            self.updateUI(hide: false)
+        }
+        NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: nil, queue: .main) { _ in
+            self.updateUI(hide: true)
+        }
+    }
+    func updateUI(hide: Bool) {
+        
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.1
+            
+            self.view.window?.standardWindowButton(.closeButton)?.animator().isHidden = hide
+            self.view.window?.standardWindowButton(.miniaturizeButton)?.animator().isHidden = hide
+            self.view.window?.standardWindowButton(.zoomButton)?.animator().isHidden = hide
+            
+            headerBox?.animator().isHidden = hide
+            
+            contentBoxTopConstraint?.animator().constant = hide ? 0.0 : 29.0
+        } completionHandler: {}
     }
     
     func loadWebView(_ name: String) {

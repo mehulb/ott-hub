@@ -1068,9 +1068,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="hvq-Ok-db6" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="8rP-Oz-qkj"/>
-                            <constraint firstItem="5s5-hl-06z" firstAttribute="top" secondItem="cbm-dn-n2X" secondAttribute="bottom" id="ByL-dB-FSj"/>
                             <constraint firstAttribute="trailing" secondItem="hvq-Ok-db6" secondAttribute="trailing" id="CWS-Yd-SC5"/>
                             <constraint firstAttribute="trailing" secondItem="cbm-dn-n2X" secondAttribute="trailing" id="HXc-Gq-bG3"/>
+                            <constraint firstItem="5s5-hl-06z" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="29" id="IAN-Ui-sxg"/>
                             <constraint firstItem="cbm-dn-n2X" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="LM2-QG-Xjy"/>
                             <constraint firstItem="cbm-dn-n2X" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="UrO-dF-1Mb"/>
                             <constraint firstAttribute="bottom" secondItem="hvq-Ok-db6" secondAttribute="bottom" id="cHQ-jh-Nxa"/>
@@ -1082,6 +1082,7 @@
                     </view>
                     <connections>
                         <outlet property="contentBox" destination="5s5-hl-06z" id="HZU-Ri-ZWk"/>
+                        <outlet property="contentBoxTopConstraint" destination="IAN-Ui-sxg" id="fEw-ap-gaP"/>
                         <outlet property="headerBox" destination="cbm-dn-n2X" id="Q3q-Cq-UVq"/>
                         <outlet property="highlightBox" destination="x3m-uB-b8X" id="mrD-7C-Xzz"/>
                     </connections>
