@@ -746,7 +746,10 @@
                                                     <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                                    <color key="value" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="value" red="0.070588235294117646" green="0.15686274509803921" blue="0.36470588235294116" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="activeButtonColor">
+                                                    <color key="value" red="0.99215686270000003" green="0.098039215690000001" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -781,6 +784,9 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
                                                     <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="activeButtonColor">
+                                                    <color key="value" red="0.89411764709999997" green="0.098039215690000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="serviceButton_Clicked:" target="XfG-lQ-9wD" id="lfo-Fh-RLC"/>
@@ -814,6 +820,9 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
                                                     <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="activeButtonColor">
+                                                    <color key="value" red="0.062745098040000002" green="0.66666666669999997" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="serviceButton_Clicked:" target="XfG-lQ-9wD" id="q0Z-yB-25A"/>
@@ -846,6 +855,9 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
                                                     <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="activeButtonColor">
+                                                    <color key="value" red="0.070588235289999995" green="0.15686274510000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>

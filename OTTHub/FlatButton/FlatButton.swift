@@ -186,7 +186,7 @@ open class FlatButton: NSButton, CALayerDelegate {
         NotificationCenter.default.addObserver(forName: FTNotificationNameServiceTabChanged, object: nil, queue: nil) { notif in
             if let id = (notif.object as? NSUserInterfaceItemIdentifier) {
                 if id == self.identifier {
-                    self.buttonColor = .linkColor
+                    self.buttonColor = self.activeButtonColor
                 } else {
                     self.buttonColor = .clear
                 }
