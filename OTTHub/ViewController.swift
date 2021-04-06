@@ -67,6 +67,9 @@ class ViewController: NSViewController, WKUIDelegate {
         NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: nil, queue: .main) { _ in
             self.updateUI(hide: true)
         }
+//        updateUI(hide: false)
+        
+//        contentBoxTopConstraint?.constant = 0.0
     }
     func updateUI(hide: Bool) {
         
