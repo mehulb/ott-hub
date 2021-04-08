@@ -18,132 +18,53 @@ class HeaderBox: NSBox {
     }
 }
 
-class ViewController: NSViewController, WKUIDelegate {
+class ViewController: NSViewController {
+    private var service: [String: String]?
     
-    @IBOutlet var headerBox: HeaderBox?
-    @IBOutlet var contentBox: NSBox?
-    @IBOutlet var highlightBox: NSBox?
+    @IBOutlet private var headerBox: NSButton?
+    @IBOutlet private var contentBox: NSBox?
     
-    @IBOutlet var contentBoxTopConstraint: NSLayoutConstraint?
-    
-    var currentWebView: WKWebView?
-    
-    var source: [String: [String: String]] = [
-        "youtube": [
-            "title": "YouTube",
-            "accentColor": "#FD191E",
-            "image": "youtube.png",
-            "url": "https://www.youtube.com"
-        ],
-        "netflix": [
-            "title": "Netflix",
-            "accentColor": "#E41923",
-            "image": "netflix.png",
-            "url": "https://www.netflix.com"
-        ],
-        "primevideo": [
-            "title": "PrimeVideo",
-            "accentColor": "#10AADE",
-            "image": "primevideo.png",
-            "url": "https://www.primevideo.com"
-        ],
-        "hotstar": [
-            "title": "Hotstar",
-            "accentColor": "#12285D",
-            "image": "hotstar.png",
-            "url": "https://www.hotstar.com"
-        ]
-    ]
-    var data = [String: WKWebView?]()
+    private var webView: WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadWebView("youtube")
-        
-        NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification, object: nil, queue: .main) { _ in
-            self.updateUI(hide: false)
-        }
-        NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: nil, queue: .main) { _ in
-            self.updateUI(hide: true)
-        }
-//        updateUI(hide: false)
-        
-//        contentBoxTopConstraint?.constant = 0.0
     }
-    func updateUI(hide: Bool) {
-        
-        NSAnimationContext.runAnimationGroup { context in
-            context.duration = 0.1
-            
-            self.view.window?.standardWindowButton(.closeButton)?.animator().isHidden = hide
-            self.view.window?.standardWindowButton(.miniaturizeButton)?.animator().isHidden = hide
-            self.view.window?.standardWindowButton(.zoomButton)?.animator().isHidden = hide
-            
-            headerBox?.animator().isHidden = hide
-            
-            contentBoxTopConstraint?.animator().constant = hide ? 0.0 : 29.0
-        } completionHandler: {}
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        self.view.window?.standardWindowButton(.closeButton)?.isHidden = true
+        self.view.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        self.view.window?.standardWindowButton(.zoomButton)?.isHidden = true
     }
     
-    func loadWebView(_ name: String) {
-        if let wv = currentWebView {
-            print("remove \(wv.title ?? "")")
-            wv.removeFromSuperview()
-        }
-        
-        if let webview = data[name] {
-            if let webview = webview {
-                print("load \(name)")
-                contentBox?.addSubview(webview, positioned: .above, relativeTo: nil)
-                currentWebView = webview
-                return
-            }
-        } else if let service = source[name] {
-            print("create \(name)")
+    func loadService(_ service: [String: String]?) {
+        if let service = service {
+            self.service = service
+            print("load \(service["title"] ?? "-?-")")
+            
+            self.view.window?.title = service["title"] ?? "OTT Hub"
+            
             let config = WKWebViewConfiguration()
-            let webview = WKWebView(frame: (contentBox?.contentView?.bounds)!, configuration: config)
-            webview.autoresizingMask = [.height, .width, .minXMargin, .minYMargin]
-            webview.uiDelegate = self
-            webview.load(URLRequest(url: URL(string: service["url"]!)!))
-            contentBox?.addSubview(webview, positioned: .above, relativeTo: nil)
-            data[name] = webview
-            currentWebView = webview
-            return
-        }
-        print("something is wrong")
-    }
-    
-    @IBAction func serviceButton_Clicked(_ button: FlatButton) {
-        if let id = button.identifier {
-            loadWebView(id.rawValue)
-            NotificationCenter.default.post(name: FTNotificationNameServiceTabChanged, object: id)
-        }
-    }
-    @IBAction func navigationActionButton_Clicked(_ button: FlatButton) {
-        if let wv = currentWebView {
-            switch button.tag {
-                case -1:
-                    wv.goBack()
-                case 1:
-                    wv.goForward()
-                default:
-                    wv.reload()
-            }
-        }
-    }
-    @IBAction func floatButton_Clicked(_ button: FlatButton) {
-        if self.view.window!.level == .normal {
-            self.view.window!.level = .floating
-            button.iconColor = .systemRed
-        }
-        else {
-            self.view.window!.level = .normal
-            button.iconColor = .textColor
+            let webView = WKWebView(frame: (contentBox?.contentView?.bounds)!, configuration: config)
+            webView.autoresizingMask = [.height, .width, .minXMargin, .minYMargin]
+            webView.uiDelegate = self
+            webView.load(URLRequest(url: URL(string: service["url"]!)!))
+            contentBox?.addSubview(webView, positioned: .above, relativeTo: nil)
         }
     }
     
-    // MARK: - WKUIDelegate
+    @IBAction func closeButton_Clicked(_ button: NSButton) {
+        self.view.window?.performClose(nil)
+    }
+    @IBAction func minimizeButton_Clicked(_ button: NSButton) {
+        self.view.window?.performMiniaturize(nil)
+    }
+    @IBAction func zoomButton_Clicked(_ button: NSButton) {
+        self.view.window?.performZoom(nil)
+    }
+}
+
+// MARK: - WKUIDelegate
+extension ViewController: WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if let url = navigationAction.request.url {
             let alert = NSAlert()
@@ -164,10 +85,10 @@ class ViewController: NSViewController, WKUIDelegate {
                 }
             }
         }
-        
         return nil
     }
 }
+
 // Key events
 extension ViewController {
     override func keyDown(with event: NSEvent) {
@@ -175,16 +96,16 @@ extension ViewController {
         if let characters = event.characters, characters.count == 1 {
             if event.modifierFlags.contains(.command) {
                 if event.keyCode == 15 {            // "r"
-                    currentWebView?.reload()
+                    webView?.reload()
                     return
                 } else if event.keyCode == 123 {    // "←"
-                    currentWebView?.goBack()
+                    webView?.goBack()
                     return
                 } else if event.keyCode == 124 {    // "→"
-                    currentWebView?.goForward()
+                    webView?.goForward()
                     return
                 } else if event.keyCode == 36 {     // "↵"
-                    currentWebView?.reloadFromOrigin()
+                    webView?.reloadFromOrigin()
                     return
                 }
             }
