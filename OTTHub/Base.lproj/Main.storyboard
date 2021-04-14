@@ -190,12 +190,11 @@
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZQ-v3-148" customClass="WindowButton" customModule="OTTHub" customModuleProvider="target">
                                             <rect key="frame" x="1" y="0.0" width="18" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusNone" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xrl-wF-f0C">
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xrl-wF-f0C">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="unselectedImage" value="NSStatusNone"/>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="NSStatusUnavailable"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -205,13 +204,12 @@
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4Y-fv-WYJ" customClass="WindowButton" customModule="OTTHub" customModuleProvider="target">
                                             <rect key="frame" x="19" y="0.0" width="18" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusNone" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Z9c-dm-bF0">
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Z9c-dm-bF0">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="NSStatusPartiallyAvailable"/>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="unselectedImage" value="NSStatusNone"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="minimizeButton_Clicked:" target="XfG-lQ-9wD" id="CqV-iM-Hee"/>
@@ -220,12 +218,11 @@
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI3-e5-Gi9" customClass="WindowButton" customModule="OTTHub" customModuleProvider="target">
                                             <rect key="frame" x="37" y="0.0" width="18" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusNone" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="txb-qw-GUc">
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="txb-qw-GUc">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="unselectedImage" value="NSStatusNone"/>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="NSStatusAvailable"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -268,7 +265,6 @@
     </scenes>
     <resources>
         <image name="NSStatusAvailable" width="16" height="16"/>
-        <image name="NSStatusNone" width="16" height="16"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
     </resources>
