@@ -13,5 +13,9 @@ class WindowController: NSWindowController {
         
         let appDelegate = NSApp.delegate as! AppDelegate
         appDelegate.windowController = self
+        
+        self.window?.standardWindowButton(.closeButton)?.isHidden = true
+        self.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        self.window?.standardWindowButton(.zoomButton)?.isHidden = true
     }
 }

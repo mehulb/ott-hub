@@ -44,10 +44,7 @@ class WindowDraggableButton: NSButton {
     override func mouseDown(with mouseDownEvent: NSEvent) {
         let window = self.window!
         let startingPoint = mouseDownEvent.locationInWindow
-        
-        highlight(false)
-//        highlight(true)
-        
+                
         // Track events until the mouse is up (in which we interpret as a click), or a drag starts (in which we pass off to the Window Server to perform the drag)
         var shouldCallSuper = false
         
@@ -64,7 +61,6 @@ class WindowDraggableButton: NSButton {
                     // track mouse drags, and if more than a few points are moved we start a drag
                     let currentPoint = event!.locationInWindow
                     if (abs(currentPoint.x - startingPoint.x) >= 5 || abs(currentPoint.y - startingPoint.y) >= 5) {
-//                        self.highlight(false)
                         stop.pointee = true
                         window.performDrag(with: event!)
                     }

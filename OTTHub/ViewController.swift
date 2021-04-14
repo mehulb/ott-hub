@@ -26,16 +26,6 @@ class ViewController: NSViewController {
     
     private var webView: WKWebView?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        self.view.window?.standardWindowButton(.closeButton)?.isHidden = true
-        self.view.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        self.view.window?.standardWindowButton(.zoomButton)?.isHidden = true
-    }
-    
     func loadService(_ service: [String: String]?) {
         if let service = service {
             self.service = service
