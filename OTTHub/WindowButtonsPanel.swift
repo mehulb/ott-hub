@@ -6,13 +6,14 @@
 //
 
 import Cocoa
+import LoggerAPI
 
 class WindowButtonsPanel: NSBox {
     override func mouseEntered(with event: NSEvent) {
-        print("Mouse Entered")
+        Log.debug("Mouse Entered")
     }
     override func mouseExited(with event: NSEvent) {
-        print("Mouse Exited")
+        Log.debug("Mouse Exited")
     }
     
 //    override func awakeFromNib() {

@@ -1,0 +1,11 @@
+//
+//  Release.xcconfig
+//  OTTHub
+//
+//  Created by Mehul Bhavani on 12/24/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Common.xcconfig"

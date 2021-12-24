@@ -1,0 +1,13 @@
+//
+//  Common.xcconfig
+//  OTTHub
+//
+//  Created by Mehul Bhavani on 12/24/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+CURRENT_PROJECT_VERSION = 211224
+MARKETING_VERSION = 2.0
+COPYRIGHT_INFO = Copyright © 2019-21 MehulB. All rights reserved.

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OTTViewController.swift
 //  FloatTube
 //
 //  Created by Mehul Bhavani on 12/01/21.
@@ -7,54 +7,59 @@
 
 import Cocoa
 import WebKit
+import LoggerAPI
 
-class HeaderBox: NSBox {
-    override func mouseUp(with event: NSEvent) {
-        if event.clickCount == 2 {
-            if let window = self.window {
-                window.zoom(nil)
-            }
-        }
-    }
-}
-
-class ViewController: NSViewController {
+class OTTViewController: NSViewController {
     private var service: [String: String]?
     
-    @IBOutlet private var headerBox: NSButton?
     @IBOutlet private var contentBox: NSBox?
+    @IBOutlet private var activityView: NSProgressIndicator?
     
     private var webView: WKWebView?
     
     func loadService(_ service: [String: String]?) {
         if let service = service {
             self.service = service
-            print("load \(service["title"] ?? "-?-")")
+            Log.error("load \(service["title"] ?? "-?-")")
             
             self.view.window?.title = service["title"] ?? "OTT Hub"
+            
+            contentBox?.wantsLayer = true
+            contentBox?.layer?.masksToBounds = true
             
             let config = WKWebViewConfiguration()
             let webView = WKWebView(frame: (contentBox?.contentView?.bounds)!, configuration: config)
             webView.autoresizingMask = [.height, .width, .minXMargin, .minYMargin]
+            webView.navigationDelegate = self
             webView.uiDelegate = self
             webView.load(URLRequest(url: URL(string: service["url"]!)!))
             contentBox?.addSubview(webView, positioned: .above, relativeTo: nil)
+            self.webView = webView
         }
     }
-    
-    @IBAction func closeButton_Clicked(_ button: NSButton) {
-        self.view.window?.performClose(nil)
+    func refreshPage() {
+        webView?.reload()
     }
-    @IBAction func minimizeButton_Clicked(_ button: NSButton) {
-        self.view.window?.performMiniaturize(nil)
+}
+
+extension OTTViewController {
+    @IBAction func reloadButton_Clicked(_ button: NSButton) {
+        if NSApp.currentEvent?.clickCount == 2 {
+            webView?.reloadFromOrigin()
+        } else {
+            webView?.reload()
+        }
     }
-    @IBAction func zoomButton_Clicked(_ button: NSButton) {
-        self.view.window?.performZoom(nil)
+    @IBAction func backwardButton_Clicked(_ button: NSButton) {
+        webView?.goBack()
+    }
+    @IBAction func forwardButton_Clicked(_ button: NSButton) {
+        webView?.goForward()
     }
 }
 
 // MARK: - WKUIDelegate
-extension ViewController: WKUIDelegate {
+extension OTTViewController: WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if let url = navigationAction.request.url {
             let alert = NSAlert()
@@ -66,10 +71,10 @@ extension ViewController: WKUIDelegate {
                 if response == .alertFirstButtonReturn {
                     NSWorkspace.shared.open([url], withApplicationAt: URL(fileURLWithPath: "/Applications/Google Chrome.app"), configuration: NSWorkspace.OpenConfiguration()) { (app, err) in
                         if let app = app {
-                            print("Loaded url [\(url.absoluteString)] with app [\(app.localizedName ?? "--")]")
+                            Log.debug("Loaded url [\(url.absoluteString)] with app [\(app.localizedName ?? "--")]")
                         }
                         if let err = err {
-                            print("but with error [\(err.localizedDescription)]")
+                            Log.debug("but with error [\(err.localizedDescription)]")
                         }
                     }
                 }
@@ -79,10 +84,30 @@ extension ViewController: WKUIDelegate {
     }
 }
 
+// MARK:- WKNavigationDelegate
+extension OTTViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        Log.debug("didStartProvisionalNavigation")
+        activityView?.startAnimation(self)
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        Log.debug("didFinish")
+        activityView?.stopAnimation(self)
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        Log.debug("\(error)")
+        activityView?.stopAnimation(self)
+    }
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        Log.debug("\(error)")
+        activityView?.stopAnimation(self)
+    }
+}
+
 // Key events
-extension ViewController {
+extension OTTViewController {
     override func keyDown(with event: NSEvent) {
-        print("\(event)")
+        Log.debug("\(event)")
         if let characters = event.characters, characters.count == 1 {
             if event.modifierFlags.contains(.command) {
                 if event.keyCode == 15 {            // "r"

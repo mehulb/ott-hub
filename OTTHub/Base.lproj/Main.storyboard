@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,6 +96,12 @@
                                                 <action selector="serviceMenuItem_Clicked:" target="Voe-Tx-rLC" id="BbD-Mi-TGW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Nh3-we-RzO"/>
+                                        <menuItem title="Refresh Page" keyEquivalent="r" id="3ee-AI-kUN">
+                                            <connections>
+                                                <action selector="refreshMenuItem_Clicked:" target="Voe-Tx-rLC" id="3gw-ge-bUv"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="vvV-4q-TeD"/>
                                         <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -133,8 +139,8 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="WindowController" id="B8D-0N-5wS" customClass="WindowController" customModule="OTTHub" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="OTT Hub" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                <windowController storyboardIdentifier="WindowController" id="B8D-0N-5wS" customClass="OTTWindowController" customModule="OTTHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="OTT Hub" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA" customClass="OTTWindow" customModule="OTTHub" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="700" height="480"/>
@@ -155,7 +161,7 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="OTTHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="OTTViewController" customModule="OTTHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="644" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -169,93 +175,114 @@
                                     <rect key="frame" x="0.0" y="0.0" width="644" height="270"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <color key="borderColor" red="0.89411764709999997" green="0.098039215690000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="sYq-vF-VX3" customClass="WindowDraggableButton" customModule="OTTHub" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="241" width="644" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="bqZ-GY-Mbf"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="LOq-YI-FWX">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
-                            </button>
-                            <box boxType="custom" borderWidth="0.0" cornerRadius="9" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="H0m-GF-VAF" customClass="WindowButtonsPanel" customModule="OTTHub" customModuleProvider="target">
-                                <rect key="frame" x="3" y="249" width="56" height="18"/>
-                                <view key="contentView" id="rHk-Eu-KP7">
-                                    <rect key="frame" x="0.0" y="0.0" width="56" height="18"/>
+                            <box boxType="custom" borderType="none" borderWidth="0.0" title="HeaderBox" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="4kQ-vr-wDJ" customClass="OTTWindowHeaderView" customModule="OTTHub" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="242" width="644" height="28"/>
+                                <view key="contentView" id="xf7-gf-Yep">
+                                    <rect key="frame" x="0.0" y="0.0" width="644" height="28"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZQ-v3-148" customClass="WindowButton" customModule="OTTHub" customModuleProvider="target">
-                                            <rect key="frame" x="1" y="0.0" width="18" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xrl-wF-f0C">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="NSStatusUnavailable"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="closeButton_Clicked:" target="XfG-lQ-9wD" id="msp-hA-Wr8"/>
-                                            </connections>
-                                        </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4Y-fv-WYJ" customClass="WindowButton" customModule="OTTHub" customModuleProvider="target">
-                                            <rect key="frame" x="19" y="0.0" width="18" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Z9c-dm-bF0">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="NSStatusPartiallyAvailable"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="minimizeButton_Clicked:" target="XfG-lQ-9wD" id="CqV-iM-Hee"/>
-                                            </connections>
-                                        </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gI3-e5-Gi9" customClass="WindowButton" customModule="OTTHub" customModuleProvider="target">
-                                            <rect key="frame" x="37" y="0.0" width="18" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="txb-qw-GUc">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="NSStatusAvailable"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="zoomButton_Clicked:" target="XfG-lQ-9wD" id="65w-C9-W8R"/>
-                                            </connections>
-                                        </button>
+                                        <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1OV-DI-dD8">
+                                            <rect key="frame" x="554" y="0.0" width="90" height="28"/>
+                                            <subviews>
+                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="atn-hG-cGK">
+                                                    <rect key="frame" x="38" y="4.5" width="18.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="9dq-Jx-7wp"/>
+                                                        <constraint firstAttribute="width" constant="18" id="Kgn-aa-pdo"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="square" title="Reload" bezelStyle="shadowlessSquare" image="arrow.clockwise" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="feB-3q-gj8">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <action selector="reloadButton_Clicked:" target="XfG-lQ-9wD" id="wlk-P2-Lak"/>
+                                                    </connections>
+                                                </button>
+                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="3e3-tb-ZCj">
+                                                    <rect key="frame" x="60" y="5.5" width="18" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="1xg-E6-5ZW"/>
+                                                        <constraint firstAttribute="width" constant="18" id="jc8-vz-Iob"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="square" title="Forward" bezelStyle="shadowlessSquare" image="arrow.right" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QiM-eF-dS0">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <action selector="forwardButton_Clicked:" target="XfG-lQ-9wD" id="B0I-ij-f3e"/>
+                                                    </connections>
+                                                </button>
+                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="eyx-il-bLt">
+                                                    <rect key="frame" x="16" y="5.5" width="18" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="ddA-zy-4VK"/>
+                                                        <constraint firstAttribute="width" constant="18" id="dzJ-El-818"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="square" title="Backward" bezelStyle="shadowlessSquare" image="arrow.left" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="CuE-2b-Lg5">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <action selector="backwardButton_Clicked:" target="XfG-lQ-9wD" id="wZy-er-es4"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3e3-tb-ZCj" firstAttribute="leading" secondItem="atn-hG-cGK" secondAttribute="trailing" constant="4" id="5LE-2E-h3R"/>
+                                                <constraint firstAttribute="width" constant="90" id="Gzv-Rg-hgI"/>
+                                                <constraint firstItem="atn-hG-cGK" firstAttribute="centerY" secondItem="1OV-DI-dD8" secondAttribute="centerY" id="IGu-TA-wXw"/>
+                                                <constraint firstItem="eyx-il-bLt" firstAttribute="centerY" secondItem="1OV-DI-dD8" secondAttribute="centerY" id="IUT-Y4-pmc"/>
+                                                <constraint firstAttribute="trailing" secondItem="3e3-tb-ZCj" secondAttribute="trailing" constant="12" id="XRV-j0-ZIo"/>
+                                                <constraint firstItem="atn-hG-cGK" firstAttribute="leading" secondItem="eyx-il-bLt" secondAttribute="trailing" constant="4" id="xma-2x-Yd5"/>
+                                                <constraint firstItem="3e3-tb-ZCj" firstAttribute="centerY" secondItem="1OV-DI-dD8" secondAttribute="centerY" id="yPc-OY-j9s"/>
+                                            </constraints>
+                                        </customView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="1OV-DI-dD8" secondAttribute="bottom" id="6Ee-hA-Ut7"/>
+                                        <constraint firstAttribute="trailing" secondItem="1OV-DI-dD8" secondAttribute="trailing" id="ZiF-tv-UHz"/>
+                                        <constraint firstItem="1OV-DI-dD8" firstAttribute="top" secondItem="xf7-gf-Yep" secondAttribute="top" id="mac-Ym-jAm"/>
+                                    </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="RjR-qg-JAM"/>
-                                    <constraint firstAttribute="height" constant="18" id="gbd-Uf-kUM"/>
+                                    <constraint firstAttribute="height" constant="28" id="1Hl-el-f4U"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="buttonsPanel" destination="1OV-DI-dD8" id="KEX-WK-pfT"/>
+                                </connections>
                             </box>
+                            <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="PxQ-Ue-b3e">
+                                <rect key="frame" x="8" y="3" width="628" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="Twr-X9-a8P"/>
+                                </constraints>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="4kQ-vr-wDJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="3g3-Vo-cLc"/>
                             <constraint firstItem="hvq-Ok-db6" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="8rP-Oz-qkj"/>
+                            <constraint firstAttribute="trailing" secondItem="4kQ-vr-wDJ" secondAttribute="trailing" id="BVL-oH-o69"/>
                             <constraint firstAttribute="trailing" secondItem="hvq-Ok-db6" secondAttribute="trailing" id="CWS-Yd-SC5"/>
-                            <constraint firstItem="H0m-GF-VAF" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="3" id="D9z-VO-OXR"/>
-                            <constraint firstAttribute="trailing" secondItem="sYq-vF-VX3" secondAttribute="trailing" id="Ho6-Fk-ytS"/>
                             <constraint firstItem="5s5-hl-06z" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="IAN-Ui-sxg"/>
-                            <constraint firstItem="H0m-GF-VAF" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="3" id="VVV-Vx-SYn"/>
+                            <constraint firstItem="4kQ-vr-wDJ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="KDa-7e-RcS"/>
                             <constraint firstAttribute="bottom" secondItem="hvq-Ok-db6" secondAttribute="bottom" id="cHQ-jh-Nxa"/>
                             <constraint firstAttribute="trailing" secondItem="5s5-hl-06z" secondAttribute="trailing" id="ct2-o8-9nh"/>
                             <constraint firstItem="hvq-Ok-db6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="el8-7Q-TzW"/>
-                            <constraint firstItem="sYq-vF-VX3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="h6W-qr-qOl"/>
                             <constraint firstItem="5s5-hl-06z" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ikA-vM-fSg"/>
+                            <constraint firstAttribute="trailing" secondItem="PxQ-Ue-b3e" secondAttribute="trailing" constant="8" id="jQ1-uX-sus"/>
                             <constraint firstAttribute="bottom" secondItem="5s5-hl-06z" secondAttribute="bottom" id="mkm-Le-v8i"/>
-                            <constraint firstItem="sYq-vF-VX3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="xvk-Gn-G7P"/>
+                            <constraint firstItem="PxQ-Ue-b3e" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="pt9-2I-otE"/>
+                            <constraint firstAttribute="bottom" secondItem="PxQ-Ue-b3e" secondAttribute="bottom" constant="4" id="ruo-Bh-96x"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="PxQ-Ue-b3e" id="gDn-LX-jG5"/>
                         <outlet property="contentBox" destination="5s5-hl-06z" id="HZU-Ri-ZWk"/>
-                        <outlet property="headerBox" destination="sYq-vF-VX3" id="WmQ-48-yQr"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -264,8 +291,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSStatusAvailable" width="16" height="16"/>
-        <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
-        <image name="NSStatusUnavailable" width="16" height="16"/>
+        <image name="arrow.clockwise" catalog="system" width="14" height="16"/>
+        <image name="arrow.left" catalog="system" width="15" height="12"/>
+        <image name="arrow.right" catalog="system" width="15" height="12"/>
     </resources>
 </document>

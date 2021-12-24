@@ -6,6 +6,8 @@
 //
 
 import Cocoa
+import HeliumLogger
+import LoggerAPI
 
 class OTTManager {
     static let shared: OTTManager = {
@@ -14,7 +16,7 @@ class OTTManager {
     }()
     private init() {}
     
-    var controllers = [String: WindowController]()
+    var controllers = [String: OTTWindowController]()
     var currentService: String?
     var services: [String: [String: String]] = [
         "youtube": [
@@ -44,6 +46,7 @@ class OTTManager {
     ]
     
     func showWindow(forService service: String) {
+        currentService = service
         if let windowController = controllers[service] {
             windowController.window?.makeKeyAndOrderFront(nil)
         } else {
@@ -52,23 +55,42 @@ class OTTManager {
             }
             let mainStoryboard = NSStoryboard(name: NSStoryboard.Name(mainStoryboardName), bundle: Bundle.main)
             
-            guard let wc = mainStoryboard.instantiateController(withIdentifier: "WindowController") as? WindowController else {
+            guard let windowController = mainStoryboard.instantiateController(withIdentifier: "WindowController") as? OTTWindowController else {
                 fatalError("Initial controller is not `NSWindowController` in storyboard `\(mainStoryboard)`")
             }
-            let windowController = wc
+            windowController.service = service
             windowController.window?.makeKeyAndOrderFront(nil)
-            if let vc = windowController.contentViewController as? ViewController {
+            if let vc = windowController.contentViewController as? OTTViewController {
                 vc.loadService(services[service]) 
             }
             controllers[service] = windowController
         }
+    }
+    func closeWindow(forService service: String) {
+        controllers.removeValue(forKey: service)
+    }
+    func refreshWindow() {
+        if let service = currentService, let windowController = controllers[service] {
+            if let viewController = windowController.contentViewController as? OTTViewController {
+                viewController.refreshPage()
+            }
+        }
+    }
+}
+
+extension OTTManager {
+    func readServices() throws -> [OTTService]? {
+        nil
+    }
+    func writeServices() throws {
+        
     }
 }
 
 struct OTTService {
     var id: String?
     var title: String?
-    var accentColor: NSColor?
-    var image: NSImage?
+    var accentColorString: String?
+    var imageName: String?
     var url: URL?
 }
