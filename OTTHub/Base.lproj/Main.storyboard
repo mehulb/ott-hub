@@ -192,7 +192,7 @@
                                                         <constraint firstAttribute="height" constant="14" id="9dq-Jx-7wp"/>
                                                         <constraint firstAttribute="width" constant="18" id="Kgn-aa-pdo"/>
                                                     </constraints>
-                                                    <buttonCell key="cell" type="square" title="Reload" bezelStyle="shadowlessSquare" image="arrow.clockwise" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="feB-3q-gj8">
+                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="arrow.clockwise" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="feB-3q-gj8">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -207,7 +207,7 @@
                                                         <constraint firstAttribute="height" constant="14" id="1xg-E6-5ZW"/>
                                                         <constraint firstAttribute="width" constant="18" id="jc8-vz-Iob"/>
                                                     </constraints>
-                                                    <buttonCell key="cell" type="square" title="Forward" bezelStyle="shadowlessSquare" image="arrow.right" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QiM-eF-dS0">
+                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="arrow.right" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QiM-eF-dS0">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -222,7 +222,7 @@
                                                         <constraint firstAttribute="height" constant="14" id="ddA-zy-4VK"/>
                                                         <constraint firstAttribute="width" constant="18" id="dzJ-El-818"/>
                                                     </constraints>
-                                                    <buttonCell key="cell" type="square" title="Backward" bezelStyle="shadowlessSquare" image="arrow.left" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="CuE-2b-Lg5">
+                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="arrow.left" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="CuE-2b-Lg5">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
