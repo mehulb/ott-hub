@@ -17,7 +17,18 @@ class OTTManager {
     private init() {}
     
     var controllers = [String: OTTWindowController]()
-    var currentService: String?
+    var currentService: String {
+        get {
+            if let _ser = UserDefaults.standard.string(forKey: "currSer") {
+                return _ser
+            } else {
+                return "youtube"
+            }
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: "currSer")
+        }
+    }
     var services: [String: [String: String]] = [
         "youtube": [
             "title": "YouTube",
@@ -70,7 +81,7 @@ class OTTManager {
         controllers.removeValue(forKey: service)
     }
     func refreshWindow() {
-        if let service = currentService, let windowController = controllers[service] {
+        if let windowController = controllers[currentService] {
             if let viewController = windowController.contentViewController as? OTTViewController {
                 viewController.refreshPage()
             }

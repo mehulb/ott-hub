@@ -33,25 +33,32 @@ class OTTWindow: NSWindow {
 }
 extension OTTWindow: NSWindowDelegate {
     func windowDidBecomeKey(_ notification: Notification) {
-        Log.debug("\(String(describing: (self.windowController as! OTTWindowController).service))" )
-        
-        if let wc = self.windowController as? OTTWindowController {
-            if let service = wc.service {
-                OTTManager.shared.currentService = service
-            }
+        if let _service = (self.windowController as? OTTWindowController)?.service {
+            Log.debug(_service)
+            OTTManager.shared.currentService = _service
         }
     }
     func windowDidResignKey(_ notification: Notification) {
-        Log.debug("\(String(describing: (self.windowController as! OTTWindowController).service))" )
+        if let _service = (self.windowController as? OTTWindowController)?.service {
+            Log.debug(_service)
+        }
     }
     func windowDidBecomeMain(_ notification: Notification) {
-        Log.debug("\(String(describing: (self.windowController as! OTTWindowController).service))" )
+        if let _service = (self.windowController as? OTTWindowController)?.service {
+            Log.debug(_service)
+        }
     }
     func windowDidResignMain(_ notification: Notification) {
-        Log.debug("\(String(describing: (self.windowController as! OTTWindowController).service))" )
+        if let _service = (self.windowController as? OTTWindowController)?.service {
+            Log.debug(_service)
+        }
     }
     func windowWillClose(_ notification: Notification) {
-        Log.debug("\(String(describing: (self.windowController as! OTTWindowController).service))" )
+        if let _service = (self.windowController as? OTTWindowController)?.service {
+            Log.debug(_service)
+            OTTManager.shared.closeWindow(forService: _service)
+        }
+        Log.debug("\(OTTManager.shared.controllers)")
     }
 }
 

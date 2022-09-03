@@ -28,6 +28,7 @@ class OTTViewController: NSViewController {
             contentBox?.layer?.masksToBounds = true
             
             let config = WKWebViewConfiguration()
+            config.preferences.setValue(true, forKey: "fullScreenEnabled")
             let webView = WKWebView(frame: (contentBox?.contentView?.bounds)!, configuration: config)
             webView.autoresizingMask = [.height, .width, .minXMargin, .minYMargin]
             webView.navigationDelegate = self

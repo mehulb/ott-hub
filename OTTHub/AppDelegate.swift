@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         Log.logger = logger
         
-        OTTManager.shared.showWindow(forService: "youtube")
+        OTTManager.shared.showWindow(forService: OTTManager.shared.currentService)
     }
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
